@@ -51,13 +51,13 @@ client.on('message', msg => {
     if (mess[0] == "!roll") {
       if (mess[1]) {
         embed = new Discord.RichEmbed();
-        embed.setAuthor(msg.author.username, "Is rolling a Dice...")
+        embed.setAuthor("Is rolling a Dice...", msg.author.avatarURL)
         embed.setColor("BLUE")
         embed.addField(("D" + mess[1] + ":"), (generateRandomNumber(mess[1]) + "!"));
         msg.channel.send(embed)
       } else {
         embed = new Discord.RichEmbed();
-        embed.setAuthor(msg.author.username, "Is rolling a Dice...")
+        embed.setAuthor("Is rolling a Dice...", msg.author.avatarURL)
         embed.setColor("BLUE")
         embed.addField("D6:", (generateRandomNumber(6) + "!"));
         msg.channel.send(embed)
@@ -199,4 +199,3 @@ io.action('Set Online', (cb) => {
 
   }
 });
-Is rolling a Dice...
