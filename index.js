@@ -49,7 +49,7 @@ client.on('message', msg => {
   if (isOk(msg)) {
     if (msg.content.toLowerCase() == "!roll") {
       embed = new Discord.RichEmbed();
-      embed.setAuthor(msg.author.username, msg.author.avatar)
+      embed.setAuthor(msg.author.username, msg.author.avatarURL)
       embed.setColor("BLUE")
       embed.addField("Roll:", (generateRandomNumber(6)));
       msg.channel.send(embed)
