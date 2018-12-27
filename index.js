@@ -47,12 +47,21 @@ client.on('message', msg => {
 // !roll
 client.on('message', msg => {
   if (isOk(msg)) {
-    if (msg.content.toLowerCase() == "!roll") {
-      embed = new Discord.RichEmbed();
-      embed.setAuthor(msg.author.username, msg.author.avatarURL)
-      embed.setColor("BLUE")
-      embed.addField("Roll:", (generateRandomNumber(6)));
-      msg.channel.send(embed)
+    mess = msg.content.toLowerCase().split(" ");
+    if (mess[0] == "!roll") {
+      if (mess[1]) {
+        embed = new Discord.RichEmbed();
+        embed.setAuthor(msg.author.username, msg.author.avatarURL)
+        embed.setColor("BLUE")
+        embed.addField(("D" + mess[1] + ":"), (generateRandomNumber(mess[1]) + "!"));
+        msg.channel.send(embed)
+      } else {
+        embed = new Discord.RichEmbed();
+        embed.setAuthor(msg.author.username, msg.author.avatarURL)
+        embed.setColor("BLUE")
+        embed.addField("D6:", (generateRandomNumber(6) + "!"));
+        msg.channel.send(embed)
+      }
     }
   }
 });
