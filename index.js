@@ -1,3 +1,4 @@
+// Defining and requiring stuff
 require('dotenv').config();
 const io = require('@pm2/io')
 io.init({
@@ -7,6 +8,14 @@ io.init({
     }
   }
 })
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const token = process.env.tkn;
+// Functions
+function generateRandomNumber(max) {
+  return Math.floor(Math.random() * max) + 1;
+}
+
 function isOk(message) {
   if (message.author.bot) {
     return false
@@ -20,14 +29,13 @@ function isOk(message) {
     return false
   }
 }
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const token = process.env.tkn;
+// Pre-Login
 client.on('ready', () => {
   console.log("Hacking the mainframe with an identity of:");
   console.log(client.user.username);
   console.log("I'm in")
 });
+// Commands
 // !yui
 client.on('message', msg => {
   if (isOk(msg)) {
@@ -36,7 +44,21 @@ client.on('message', msg => {
     }
   }
 });
+// !roll
+client.on('message', msg => {
+  if (isOk(msg)) {
+    if (msg.content.toLowerCase() == "!roll") {
+      embed = new Discord.RichEmbed();
+      embed.setAuthor(msg.author.username, msg.author.avatar)
+      embed.setColor("BLUE")
+      embed.addField("Roll:", (generateRandomNumber(6)));
+      msg.channel.send(embed)
+    }
+  }
+});
+// Login
 client.login(token);
+// Metric
 io.metric({
   type: 'metric',
   name: 'Accessible Servers',
