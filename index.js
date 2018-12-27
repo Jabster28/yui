@@ -77,6 +77,22 @@ client.on('message', msg => {
   }
 });
 
+// !richembed
+client.on('message', msg => {
+  if (isOk(msg)) {
+    if (msg.content.toLowerCase() == "!richembed") {
+      embed = new Discord.RichEmbed();
+      embed.setTitle("Title")
+      embed.addField("Test Field Title", "Test addField")
+      embed.setAuthor(msg.author.username, msg.author.authorURL)
+      embed.setColor("BLUE")
+      embed.setDescription("ree")
+      embed.setFooter("footer")
+      msg.channel.send(embed)
+    }
+  }
+});
+
 
 // Login
 
