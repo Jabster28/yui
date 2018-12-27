@@ -7,7 +7,7 @@ io.init({
     }
   }
 })
-unction isOk(message) {
+function isOk(message) {
   if (message.author.bot) {
     return false
   } else if (message.author.username == "Jabster28") {
