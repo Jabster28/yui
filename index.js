@@ -7,6 +7,19 @@ io.init({
     }
   }
 })
+unction isOk(message) {
+  if (message.author.bot) {
+    return false
+  } else if (message.author.username == "Jabster28") {
+    return true
+  } else if ((message.channel.name == "bot-commands") || (message.channel.name == "bot-craziness") || (message.channel.name == "testing-1") || (message.channel.name == "testing-2") || (message.channel.name == "bot-hell") || (message.channel.name == "celle")) {
+    return true
+  } else if ((message.guild.name != "Unaccepted fanclub") || (message.guild.name != "Discord Bot List")) {
+    return true
+  } else {
+    return false
+  }
+}
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.env.tkn;
