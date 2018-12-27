@@ -1,4 +1,5 @@
 // Defining and requiring stuff
+
 require('dotenv').config();
 const io = require('@pm2/io')
 io.init({
@@ -11,7 +12,10 @@ io.init({
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.env.tkn;
+
+
 // Functions
+
 function generateRandomNumber(max) {
   return Math.floor(Math.random() * max) + 1;
 }
@@ -29,13 +33,19 @@ function isOk(message) {
     return false
   }
 }
+
+
 // Pre-Login
+
 client.on('ready', () => {
   console.log("Hacking the mainframe with an identity of:");
   console.log(client.user.username);
   console.log("I'm in")
 });
+
+
 // Commands
+
 // !yui
 client.on('message', msg => {
   if (isOk(msg)) {
@@ -44,6 +54,7 @@ client.on('message', msg => {
     }
   }
 });
+
 // !roll
 client.on('message', msg => {
   if (isOk(msg)) {
@@ -65,9 +76,15 @@ client.on('message', msg => {
     }
   }
 });
+
+
 // Login
+
 client.login(token);
-// Metric
+
+
+// PM2 Metrics
+
 io.metric({
   type: 'metric',
   name: 'Accessible Servers',
@@ -104,7 +121,7 @@ io.metric({
     return client.users.array().length;
   }
 });
-
+// PM2 Actions
 io.action('Logging Test', (cb) => {
   console.log("test pm2 log")
   cb("Test success");
